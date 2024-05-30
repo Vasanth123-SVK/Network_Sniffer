@@ -21,10 +21,10 @@ This project is an advanced network sniffer implemented in Python using the Scap
 
 ## Installation
 
-1. **Clone the repository:**
+1. **Create the Folder:**
 
    ```bash
-   git clone https://github.com/username/network-sniffer.git
+   mkdir network-sniffer
    cd network-sniffer
    ```
 
@@ -43,7 +43,7 @@ This project is an advanced network sniffer implemented in Python using the Scap
    On Windows, you need to run the script as an administrator. You can do this by right-clicking on the Visual Studio Code shortcut and selecting "Run as administrator", then navigating to the directory where the script is located and running:
 
    ```bash
-   python network_sniffer.py
+   python task_1.py
    ```
 
 2. **Log file:**
