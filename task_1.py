@@ -1,3 +1,4 @@
+#importing the necessary libraries
 import os
 import sys
 import ctypes
@@ -18,13 +19,13 @@ def packet_callback(packet):
     # Timestamp
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     
-    # Check for IP packets
+    # Checking for IP packets
     if IP in packet:
         ip_src = packet[IP].src
         ip_dst = packet[IP].dst
         protocol = packet[IP].proto
         
-        # Handle TCP packets
+        # Handling the TCP packets
         if TCP in packet:
             tcp_sport = packet[TCP].sport
             tcp_dport = packet[TCP].dport
@@ -34,7 +35,7 @@ def packet_callback(packet):
             print(packet_info)
             log_packet(packet_info)
         
-        # Handle UDP packets
+        # Handling UDP packets
         elif UDP in packet:
             udp_sport = packet[UDP].sport
             udp_dport = packet[UDP].dport
@@ -43,7 +44,7 @@ def packet_callback(packet):
             print(packet_info)
             log_packet(packet_info)
         
-        # Handle HTTP requests
+        # Handling HTTP requests
         elif packet.haslayer(HTTPRequest):
             http_layer = packet[HTTPRequest]
             packet_info = (f"{timestamp} - HTTP Request: {ip_src} -> {ip_dst} "
@@ -58,7 +59,7 @@ def packet_callback(packet):
             print(packet_info)
             log_packet(packet_info)
     
-    # Handle ARP packets
+    # Handling ARP packets
     elif ARP in packet:
         arp_src = packet[ARP].psrc
         arp_dst = packet[ARP].pdst
@@ -78,7 +79,7 @@ def is_admin():
     except:
         return False
 
-# Start sniffing packets
+# Starting sniffing packets
 if __name__ == "__main__":
     if not is_admin():
         sys.exit("Please run as administrator")
